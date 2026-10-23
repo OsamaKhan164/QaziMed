@@ -223,9 +223,6 @@ test("WhatsApp message matches the approved layout exactly", () => {
 🏪 Medical Store:
 osama medical
 
-📱 Mobile:
-03472541767
-
 📍 Delivery Address:
 shiekh yousef ada,
 

@@ -23,14 +23,14 @@ export function sanitizeMobileInput(input) {
 }
 
 // Pakistani mobile number: exactly 11 digits, starting with 03 (e.g. 03472541767).
-export function validateMobile(value) {
-  const v = String(value || "").trim();
-  if (!v) return "Please enter your mobile number.";
-  if (!/^\d+$/.test(v)) return "Mobile number can contain digits only, e.g. 03472541767.";
-  if (!v.startsWith("03")) return "Mobile number must start with 03, e.g. 03472541767.";
-  if (v.length !== 11) return `Mobile number must be exactly 11 digits, e.g. 03472541767 (you entered ${v.length}).`;
-  return "";
-}
+// export function validateMobile(value) {
+//   const v = String(value || "").trim();
+//   if (!v) return "Please enter your mobile number.";
+//   if (!/^\d+$/.test(v)) return "Mobile number can contain digits only, e.g. 03472541767.";
+//   if (!v.startsWith("03")) return "Mobile number must start with 03, e.g. 03472541767.";
+//   if (v.length !== 11) return `Mobile number must be exactly 11 digits, e.g. 03472541767 (you entered ${v.length}).`;
+//   return "";
+// }
 
 export function validateAddress(value) {
   const v = String(value || "").trim();
