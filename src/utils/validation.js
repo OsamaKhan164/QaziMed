@@ -40,12 +40,14 @@ export function validateAddress(value) {
   return "";
 }
 
+
 export function validateCheckout(form) {
   const errors = {
     storeName: validateStoreName(form.storeName),
-    mobile: validateMobile(form.mobile),
     address: validateAddress(form.address),
   };
+
   const isValid = Object.values(errors).every((e) => e === "");
+
   return { errors, isValid };
 }
