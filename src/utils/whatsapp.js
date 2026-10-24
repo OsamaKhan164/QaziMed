@@ -1,5 +1,5 @@
 import { formatPrice } from "./format.js";
-import { normalizeMobile } from "./validation.js";
+// import { normalizeMobile } from "./validation.js";
 
 // Joins a multi-line value into one line ("Shop 4,\nMain Bazar" -> "Shop 4, Main Bazar", no doubled commas).
 const oneLine = (text) => String(text || "").replace(/,?\s*[\r\n]+\s*/g, ", ").replace(/\s+/g, " ").trim();
@@ -17,19 +17,19 @@ const TIMES = "\u00D7";     // ×
 
 // Builds the plain-text order message that the customer reviews and sends in WhatsApp.
 // Only products that can be ordered (in stock) are listed.
-export function buildOrderMessage({ storeName, mobile, address }, summary) {
+export function buildOrderMessage({ storeName,  address }, summary) {
   const items = summary.orderable || summary.lines;
   const lines = [
     `${CART} NEW ORDER REQUEST`,
-    "",
+    // "",
     SEPARATOR,
-    "",
+    // "",
     `${STORE} Medical Store:`,
     oneLine(storeName),
     "",
-    `${PHONE} Mobile:`,
-    normalizeMobile(mobile),
-    "",
+    // `${PHONE} Mobile:`,
+    // normalizeMobile(mobile),
+    // "",
     `${PIN} Delivery Address:`,
     oneLine(address),
     "",
@@ -40,9 +40,9 @@ export function buildOrderMessage({ storeName, mobile, address }, summary) {
     ...items.map((l, i) => `${i + 1}. ${l.name} ${DASH} ${l.quantity} ${TIMES} ${formatPrice(l.price)} = ${formatPrice(l.lineTotal)}`),
     "",
     SEPARATOR,
-    "",
+    // "",
     `${MONEY} Grand Total: ${formatPrice(summary.grandTotal)}`,
-    "",
+    // "",
     SEPARATOR,
     "",
     "Kindly confirm my order. Thank you!",
