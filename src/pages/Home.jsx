@@ -49,7 +49,7 @@ export default function Home({ onOpenProducts }) {
 
       <TrustBar />
 
-      <section className="featured-band" id="featured">
+      {/* <section className="featured-band" id="featured">
        <div className="container featured-wrap">
         <div className="featured">
           <div className="section__head">
@@ -63,7 +63,7 @@ export default function Home({ onOpenProducts }) {
           </div>
         </div>
        </div>
-      </section>
+      </section> */}
 
     </>
   );
