@@ -4,11 +4,13 @@
 import { useState } from "react";
 import PlaceholderArt from "./PlaceholderArt.jsx";
 
-const IMAGEKIT_URL = "https://ik.imagekit.io/yl9wuvmjg";
+const IMAGEKIT_URL =
+  "https://ik.imagekit.io/yl9wuvmjg/tr:w-600,q-auto,f-auto";
+
 const IMAGEKIT_FOLDER = "Qazi%20Medicine%20Company";
 
 const CLOUDINARY_URL =
-  "https://res.cloudinary.com/tbiqhdou/image/upload";
+  "https://res.cloudinary.com/tbiqhdou/image/upload/f_auto,q_auto,w_600,c_limit";
 
 function getImageSources(image) {
   if (!image) return [];
