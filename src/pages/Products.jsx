@@ -11,6 +11,18 @@ const PAGE_SIZE = 24;
 const counts = countByCategory(products);
 const ALL = ["All", ...CATEGORIES];
 
+// Shuffle products using Fisher-Yates algorithm.
+function shuffleProducts(list) {
+  const shuffled = [...list];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
 export default function Products({
   filters,
   setFilters,
@@ -24,10 +36,20 @@ export default function Products({
 
   const loadMoreRef = useRef(null);
 
-  const results = useMemo(
-    () => filterProducts(products, filters),
-    [filters]
+  // Create a new random order whenever this page mounts.
+  const [randomProducts] = useState(() =>
+    shuffleProducts(products)
   );
+
+  // All Products uses random order.
+  // Categories and search results retain original order.
+  const results = useMemo(() => {
+    if (filters.category === "All" && !filters.query.trim()) {
+      return randomProducts;
+    }
+
+    return filterProducts(products, filters);
+  }, [filters, randomProducts]);
 
   // Reset to first 24 products whenever filters change.
   useEffect(() => {
